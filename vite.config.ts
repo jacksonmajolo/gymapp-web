@@ -1,15 +1,12 @@
-import { defineConfig, loadEnv } from 'vite'
+import { defineConfig, loadEnv, type ConfigEnv } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from 'path'
 
-export default ({ mode }) => {
+export default ({ mode }: ConfigEnv) => {
   const env = loadEnv(mode, process.cwd(), '')
 
   return defineConfig({
-    plugins: [
-      react()
-    ],
-
+    plugins: [react()],
     resolve: {
       alias: {
         '@': path.resolve(__dirname, './src'),
@@ -19,11 +16,10 @@ export default ({ mode }) => {
         '@shared': path.resolve(__dirname, './src/shared/src'),
       },
     },
-
     server: {
       host: true,
       allowedHosts: ['host.docker.internal'],
       port: Number(env.VITE_PORT) || 5173,
-    },
+    }
   })
 }
