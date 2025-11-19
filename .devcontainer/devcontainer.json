@@ -1,0 +1,22 @@
+{
+    "name": "gymapp-web",
+    "dockerComposeFile": [
+        "docker/docker-compose.yml"
+    ],
+    "workspaceFolder": "/var/www/",
+    "service": "gymapp-web",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "sleistner.vscode-fileutils",
+                "eamodio.gitlens",
+                "editorconfig.editorconfig",
+                "redhat.vscode-yaml"
+            ],
+            "settings": {
+                "terminal.integrated.defaultProfile.linux": "bash"
+            }
+        }
+    },
+    "forwardPorts": []
+}
