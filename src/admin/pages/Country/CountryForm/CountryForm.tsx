@@ -2,13 +2,12 @@ import { type FC, useEffect } from "react";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FormProvider, type SubmitHandler, useForm } from "react-hook-form";
-import { CountryRepository } from "@admin/repositories/CountryRepository";
-import { CountryService } from "@admin/services/CountryService";
 import { useNavigate } from "react-router";
 import TextField from "@common/components/Form/TextField";
 import Label from "@common/components/Form/Label";
 import Button from "@common/components/Form/Button";
 import "./index.scss";
+import { useServices } from "@/admin/contexts/ServiceContext";
 
 const CountrySchema = z.object({
   name: z.string().min(1, "name is required").max(255, "max size name"),
@@ -23,7 +22,9 @@ interface CountryFormProps {
 }
 
 export const CountryForm: FC<CountryFormProps> = ({ id }) => {
-  const countryService = new CountryService(new CountryRepository());
+  const navigate = useNavigate();
+
+  const { countryService } = useServices();
 
   const methods = useForm<CountrySchemaType>({
     resolver: zodResolver(CountrySchema),
@@ -31,8 +32,6 @@ export const CountryForm: FC<CountryFormProps> = ({ id }) => {
       active: true,
     },
   });
-
-  const navigate = useNavigate();
 
   useEffect(() => {
     if (id) {

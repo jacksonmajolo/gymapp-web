@@ -1,16 +1,15 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { CountryRepository } from "@admin/repositories/CountryRepository";
-import { CountryService } from "@admin/services/CountryService";
 import { type Country } from "@admin/types/Country";
 import Button from "@common/components/Form/Button";
 import "./index.scss";
+import { useServices } from "@/admin/contexts/ServiceContext";
 
 export const CountryListPage = () => {
   const navigate = useNavigate();
-
-  const countryService = new CountryService(new CountryRepository());
-
+  
+  const { countryService } = useServices();
+  
   const [countries, setCountries] = useState<Country[]>([]);
 
   useEffect(() => {

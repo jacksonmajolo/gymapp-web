@@ -31,11 +31,15 @@ export class CountryRepositoryMock implements ICountryRepository {
   }
 
   async create(record: Country): Promise<Country> {
+    record.id = this.items.length + 1;
+    
     this.items.push(record);
     return record;
   }
 
   async update(id: number, record: Country): Promise<Country> {
+    record.id = id;
+
     this.items = this.items.map((item) => (id === item.id ? record : item));
     return record;
   }
