@@ -13,11 +13,7 @@ export const CountryFormPage = () => {
       <h1>Country {id ? `- ${id}` : ""}</h1>
 
       <div>
-        <Button
-          onClick={() => {
-            navigate(-1);
-          }}
-        >
+        <Button onClick={() => { navigate(-1);}}>
           Back
         </Button>
       </div>
