@@ -3,7 +3,7 @@ import "./index.scss";
 export const HomePage = () => {
   return (
     <>
-      <h1>Home</h1>
+      <h2>Home</h2>
     </>
   );
 };

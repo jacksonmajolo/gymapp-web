@@ -12,7 +12,7 @@ export const CountryListPage = () => {
 
   return (
     <>
-      <h1>Countries</h1>
+      <h2>Countries</h2>
       
       <div>
         <Button onClick={() => onCreate()}>

@@ -7,14 +7,13 @@ export const NotFoundPage = () => {
 
   return (
     <>
-      <h1>NotFound</h1>
-      <Button
-        onClick={() => {
-          navigate(-1);
-        }}
-      >
-        Back
-      </Button>
+      <h2>NotFound</h2>
+
+      <div>
+        <Button onClick={() => {navigate(-1);}}>
+          Back
+        </Button>
+      </div>
     </>
   );
 };

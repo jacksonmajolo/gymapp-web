@@ -3,9 +3,10 @@ import "./index.scss";
 
 export const Template = () => {
   return (
-    <>
-      Client
+    <div className="client-template">
+      <h1>Client</h1>
+      
       <Outlet />
-    </>
+    </div>
   );
 };
