@@ -1,0 +1,24 @@
+[
+    {
+        "id": 1,
+        "uuid": "",
+        "code": "BR",
+        "name": "Brazil",
+        "active": true
+    },
+    {
+        "id": 2,
+        "uuid": "",
+        "code": "ARG",
+        "name": "Argentina",
+        "active": true
+        
+    },
+    {
+        "id": 3,
+        "uuid": "",
+        "code": "",
+        "name": "Chile",
+        "active": true
+    }
+]

@@ -10,10 +10,10 @@ export default ({ mode }: ConfigEnv) => {
     resolve: {
       alias: {
         '@': path.resolve(__dirname, './src'),
-        '@admin': path.resolve(__dirname, './src/admin/src'),
-        '@client': path.resolve(__dirname, './src/client/src'),
-        '@public': path.resolve(__dirname, './src/public/src'),
-        '@shared': path.resolve(__dirname, './src/shared/src'),
+        '@admin': path.resolve(__dirname, './src/admin'),
+        '@client': path.resolve(__dirname, './src/client'),
+        '@public': path.resolve(__dirname, './src/public'),
+        '@common': path.resolve(__dirname, './src/common'),
       },
     },
     server: {
