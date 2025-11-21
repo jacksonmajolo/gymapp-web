@@ -1,5 +1,5 @@
 import {type IRecordRepository, RecordRepository} from "@common/base/RecordRepository";
-import { AdminApi } from "@admin/api/Api";
+import { GymAppCoreApi } from "@admin/api/GymAppCoreApi";
 import type { Country } from "@admin/types/Country";
 
 export interface ICountryRepository extends IRecordRepository<Country> {}
@@ -9,6 +9,6 @@ export class CountryRepository
   implements ICountryRepository
 {
   constructor() {
-    super(new AdminApi("countries"));
+    super(new GymAppCoreApi("countries"));
   }
 }

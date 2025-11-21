@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { type Country } from "@admin/types/Country";
 import Button from "@common/components/Form/Button";
 import "./index.scss";
-import { useServices } from "@/admin/contexts/ServiceContext";
+import { useServices } from "@admin/contexts/ServiceContext";
 
 export const CountryList = () => {
   const navigate = useNavigate();

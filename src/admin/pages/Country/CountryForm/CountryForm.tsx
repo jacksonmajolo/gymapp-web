@@ -5,9 +5,9 @@ import { FormProvider, type SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
 import TextField from "@common/components/Form/TextField";
 import Label from "@common/components/Form/Label";
-import Button from "@common/components/Form/Button";
 import "./index.scss";
-import { useServices } from "@/admin/contexts/ServiceContext";
+import { useServices } from "@admin/contexts/ServiceContext";
+import { ProtectedSaveButton } from "@admin/components/Form/ProtectedSaveButton/ProtectedSaveButton";
 
 const CountrySchema = z.object({
   name: z.string().min(1, "name is required").max(255, "max size name"),
@@ -17,7 +17,7 @@ const CountrySchema = z.object({
 
 type CountrySchemaType = z.infer<typeof CountrySchema>;
 
-interface CountryFormProps {
+type CountryFormProps = {
   id?: number;
 }
 
@@ -66,7 +66,7 @@ export const CountryForm: FC<CountryFormProps> = ({ id }) => {
             <TextField name="name" />
           </div>
           <div>
-            <Button type="submit">Save</Button>
+            <ProtectedSaveButton role={id ? "countries.update" : "countries.create"}/>
           </div>
         </form>
       </FormProvider>

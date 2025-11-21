@@ -1,7 +1,7 @@
 import { type FC, type ReactNode } from "react";
 import "./index.scss";
 
-type ButtonProps = {
+export type ButtonProps = {
   children: ReactNode;
   type?: "submit" | "reset" | "button";
   onClick?: () => void;

@@ -5,6 +5,7 @@ import CountryForm from "@admin/pages/Country/CountryForm";
 import { LoginFormPage } from "@admin/pages/Login/LoginForm/LoginFormPage";
 import NotFound from "@admin/pages/NotFound";
 import Template from "@admin/components/Template";
+import ProtectedRoute from "@common/components/ProtectedRoute";
 
 export const Router = () => {
   return (
@@ -13,9 +14,24 @@ export const Router = () => {
 
       <Route element={<Template />}>
         <Route index element={<Home />} />
-        <Route path="countries" element={<CountryList />} />
-        <Route path="countries/create" element={<CountryForm />} />
-        <Route path="countries/:id/edit" element={<CountryForm />} />
+        <Route path="countries" element={
+            <ProtectedRoute guardName="admin" role="countries.view">
+              <CountryList />
+            </ProtectedRoute>
+          }
+        />
+        <Route path="countries/create" element={
+            <ProtectedRoute guardName="admin" role="countries.create">
+              <CountryForm />
+            </ProtectedRoute>
+          }
+        />
+        <Route path="countries/:id/edit" element={
+            <ProtectedRoute guardName="admin" role="countries.edit">
+              <CountryForm />
+            </ProtectedRoute>
+          }
+        />
         <Route path="*" element={<NotFound />}></Route>
       </Route>
     </Routes>

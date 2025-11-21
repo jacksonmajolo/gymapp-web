@@ -1,5 +1,5 @@
 import { createContext, useContext } from "react";
-import { type ICountryService } from "@/admin/services/CountryService";
+import { type ICountryService } from "@admin/services/CountryService";
 
 type ServiceContextType = {
   countryService: ICountryService;
