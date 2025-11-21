@@ -1,6 +1,6 @@
-import { FC, useState } from "react";
-import TextField from "@common/components/TextField";
-import Button from "@common/components/Button";
+import { type FC, useState } from "react";
+import TextField from "@common/components/Form/TextField";
+import Button from "@common/components/Form/Button";
 import "./index.scss";
 
 type PasswordFieldProps = {
