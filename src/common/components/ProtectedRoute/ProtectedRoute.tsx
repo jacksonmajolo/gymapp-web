@@ -5,11 +5,11 @@ import { Navigate } from "react-router-dom";
 
 interface ProtectedRouteProps {
   guardName?: string;
-  role?: string;
+  permission?: string;
   children: ReactNode;
 }
 
-export function ProtectedRoute({ guardName, role, children }: ProtectedRouteProps) {
+export function ProtectedRoute({ guardName, permission, children }: ProtectedRouteProps) {
   const { user } = useAuth();
   
   const prefixRoute = (guardName == "admin" ? "/admin" : (guardName == "client" ? "/client" : "/"));
@@ -20,9 +20,9 @@ export function ProtectedRoute({ guardName, role, children }: ProtectedRouteProp
     );
   }
   
-  if (role) {
-    const containRole = useUserCan(user, role);
-    if (!containRole) {
+  if (permission) {
+    const containPermission = useUserCan(user, permission);
+    if (!containPermission) {
       return (
         <Navigate to={prefixRoute + '/missing-permission'} replace />
       );

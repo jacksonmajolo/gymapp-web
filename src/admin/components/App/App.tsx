@@ -8,7 +8,7 @@ import { KeycloakAdminAuth } from "@admin/auth/KeycloakAdminAuth";
 export const AdminApp = () => {  
   return (
     <>
-    <AuthProvider adapter={KeycloakAdminAuth}>
+    <AuthProvider adapter={ new KeycloakAdminAuth() }>
       <RepositoryProvider>
         <ServiceProvider>
           <Router />

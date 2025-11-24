@@ -5,7 +5,7 @@ export class KeycloakAdminAuth extends KeycloakAuth {
     super(
         import.meta.env.VITE_GYMAPP_AUTH_ADMIN_URL ?? "",
         import.meta.env.VITE_GYMAPP_AUTH_ADMIN_REALM ?? "",
-        import.meta.env.VITE_GYMAPP_AUTH_ADMIN_CLIENT_ID ?? ""
+        import.meta.env.VITE_GYMAPP_AUTH_ADMIN_CLIENT ?? ""
     );
   }
 }

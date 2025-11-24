@@ -4,10 +4,10 @@ import "./index.scss";
 import { useAuth } from "@admin/contexts/AuthContext";
 import { useUserCan } from "@common/hooks/UserCan";
 
-export type ProtectedButtonProps = {role?: string} & ButtonProps;
+export type ProtectedButtonProps = {permission?: string} & ButtonProps;
 
 export const ProtectedButton: FC<ProtectedButtonProps> = ({
-  role,
+  permission,
   ...ButtonProps
 }) => {
   const { user } = useAuth();
@@ -16,9 +16,9 @@ export const ProtectedButton: FC<ProtectedButtonProps> = ({
     return <></>;
   }
   
-  if (role) {
-    const containRole = useUserCan(user, role);
-    if (!containRole) {
+  if (permission) {
+    const containPermission = useUserCan(user, permission);
+    if (!containPermission) {
       return <></>;
     }
   }

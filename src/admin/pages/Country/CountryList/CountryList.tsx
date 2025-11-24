@@ -34,6 +34,7 @@ export const CountryList = () => {
     <>
       <div>
         <table>
+          <tbody>
           {countries.map((country) => (
             <tr key={country.id}>
               <td>
@@ -53,6 +54,7 @@ export const CountryList = () => {
               </td>
             </tr>
           ))}
+          </tbody>
         </table>
       </div>
     </>

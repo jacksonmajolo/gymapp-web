@@ -15,10 +15,7 @@ export class KeycloakAuth implements Authenticatable {
 
   async initialize() {
     await this.keycloak.init({
-      onLoad: "check-sso",
-      silentCheckSsoRedirectUri:
-        window.location.origin + "/silent-check-sso.html",
-      checkLoginIframe: true,
+      onLoad: "login-required",
     });
   }
 
@@ -46,6 +43,11 @@ export class KeycloakAuth implements Authenticatable {
       username: this.keycloak.tokenParsed.preferred_username ?? "",
       email: this.keycloak.tokenParsed.email,
       roles: this.keycloak.tokenParsed.realm_access?.roles ?? [],
+      permissions: this.keycloak.tokenParsed.resource_access
+        ? Object.values(this.keycloak.tokenParsed.resource_access)
+            .map((resoruceAccess: any) => resoruceAccess.roles)
+            .flat()
+        : [],
     };
   }
 }
