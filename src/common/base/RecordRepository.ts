@@ -16,32 +16,35 @@ export class RecordRepository<T extends Record>
   implements IRecordRepository<T>
 {
   private api: Api;
+  private path: string;
 
-  constructor(api: Api) {
+  constructor(api: Api, path: string = "") {
     this.api = api;
+
+    this.path = path;
   }
 
   public async list(): Promise<ResponsePaginateData<T> | undefined> {
-    return this.api.get<ResponsePaginateData<T>>("/list");
+    return this.api.get<ResponsePaginateData<T>>(`${this.path}/list`);
   }
 
   public async index(): Promise<ResponseData<T> | undefined> {
-    return this.api.get<ResponseData<T>>("/");
+    return this.api.get<ResponseData<T>>(`${this.path}`);
   }
 
   public async find(id: number): Promise<T | undefined> {
-    return this.api.get<T>(`/${id}`);
+    return this.api.get<T>(`${this.path}/${id}`);
   }
 
   public async create(record: object): Promise<T> {
-    return this.api.post<T>("/", record);
+    return this.api.post<T>(`${this.path}`, record);
   }
 
   public async update(id: number, record: object): Promise<T> {
-    return this.api.put<T>(`/${id}`, record);
+    return this.api.put<T>(`${this.path}/${id}`, record);
   }
 
   public async delete(id: number): Promise<void> {
-    this.api.delete<void>(`/${id}`);
+    this.api.delete<void>(`${this.path}/${id}`);
   }
 }

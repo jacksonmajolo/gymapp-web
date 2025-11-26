@@ -1,7 +1,7 @@
 import axios from "axios";
 import type { AxiosInstance } from "axios";
 
-export class Api {
+export class Api {  
   protected axiosInstance: AxiosInstance;
 
   constructor(baseURL: string) {
@@ -12,31 +12,6 @@ export class Api {
         "Content-Type": "application/json",
       },
     });
-
-    this.axiosInstance.interceptors.request.use(
-      (config) => {
-        // const token = localStorage.getItem("token");
-        // if (token) {
-        //   config.headers.Authorization = `Bearer ${token}`;
-        // }
-
-        return config;
-      },
-      (error) => {
-        return Promise.reject(error);
-      },
-    );
-
-    this.axiosInstance.interceptors.response.use(
-      (response) => response,
-      (error) => {
-        if (error.response?.status === 401) {
-          console.error("Unauthorized");
-        }
-
-        return Promise.reject(error);
-      },
-    );
   }
 
   public async get<T>(

@@ -8,7 +8,7 @@ export class CountryRepository
   extends RecordRepository<Country>
   implements ICountryRepository
 {
-  constructor() {
-    super(new GymAppCoreApi("countries"));
+  constructor(api: GymAppCoreApi) {
+    super(api, "countries");
   }
 }
