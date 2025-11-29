@@ -39,6 +39,6 @@ export class RecordService<T extends Record> implements IRecordService<T> {
   }
 
   async delete(id: number): Promise<void> {
-    this.repository.delete(id);
+    return this.repository.delete(id);
   }
 }

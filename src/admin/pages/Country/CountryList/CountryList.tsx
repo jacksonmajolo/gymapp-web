@@ -24,9 +24,11 @@ export const CountryList = () => {
 
   const onDelete = (country: Country) => {
     if (country.id) {
-      countryService.delete(country.id).then(() => {
-        setCountries(countries.filter(c => c.id !== country.id));
-      });
+        countryService.delete(country.id).then(() => {
+          setCountries(countries.filter(c => c.id !== country.id));
+        }).catch((error) => {
+          console.error(error.message);
+        });
     }
   };
 

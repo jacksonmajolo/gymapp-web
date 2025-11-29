@@ -3,7 +3,6 @@ import type { UserClient } from "@client/types/UserClient";
 
 export type AuthContextType = {
   user: UserClient | null;
-  isAuthenticated: boolean;
   login: () => Promise<void>;
   logout: () => Promise<void>;
   getAccessToken: () => string | null;

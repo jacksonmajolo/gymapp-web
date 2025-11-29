@@ -22,9 +22,8 @@ export class Api {
     console.log(url);
     console.log(params);
 
-    return this.axiosInstance
-      .get<T>(url, { params })
-      .then((response) => response.data);
+    const response = await this.axiosInstance.get<T>(url, { params });
+    return response.data;
   }
 
   public async post<T>(url: string, data?: any): Promise<T> {
@@ -32,9 +31,8 @@ export class Api {
     console.log(url);
     console.log(data);
 
-    return this.axiosInstance
-      .post<T>(url, data)
-      .then((response) => response.data);
+    const response = await this.axiosInstance.post<T>(url, data);
+    return response.data;
   }
 
   public async put<T>(url: string, data?: any): Promise<T> {
@@ -42,15 +40,15 @@ export class Api {
     console.log(url);
     console.log(data);
 
-    return this.axiosInstance
-      .put<T>(url, data)
-      .then((response) => response.data);
+    const response = await this.axiosInstance.put<T>(url, data);
+    return response.data;
   }
 
   public async delete<T>(url: string): Promise<T | void> {
     console.log("delete");
     console.log(url);
 
-    return this.axiosInstance.delete<T>(url).then((response) => response.data);
+    const response = await this.axiosInstance.delete<T>(url);
+    return response.data;
   }
 }

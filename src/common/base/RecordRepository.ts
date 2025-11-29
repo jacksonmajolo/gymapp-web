@@ -45,6 +45,6 @@ export class RecordRepository<T extends Record>
   }
 
   public async delete(id: number): Promise<void> {
-    this.api.delete<void>(`${this.path}/${id}`);
+    return this.api.delete<void>(`${this.path}/${id}`);
   }
 }

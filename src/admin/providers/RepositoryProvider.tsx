@@ -1,14 +1,22 @@
+import { GymAppCoreAdminApi } from "@admin/api/GymAppCoreAdminApi";
+import { useAuth } from "@admin/contexts/AuthContext";
 import { RepositoryContext } from "@admin/contexts/RepositoryContext";
 import { CountryRepositoryMock } from "@admin/mocks/CountryRepositoryMock";
 import { CountryRepository } from "@admin/repositories/CountryRepository";
 
-const repositories = {
-  // countryRepository: new CountryRepositoryMock(),
-  countryRepository: new CountryRepository(),
-};
+export const RepositoryProvider = ({ children }: { children: React.ReactNode }) => {
+  const auth = useAuth();
 
-export const RepositoryProvider = ({ children }: { children: React.ReactNode }) => (
-  <RepositoryContext.Provider value={repositories}>
-    {children}
-  </RepositoryContext.Provider>
-);
+  const api = new GymAppCoreAdminApi(auth);
+
+  const repositories = {
+    // countryRepository: new CountryRepositoryMock(),
+    countryRepository: new CountryRepository(api),
+  };
+
+  return (
+    <RepositoryContext.Provider value={repositories}>
+      {children}
+    </RepositoryContext.Provider>
+  )
+};
