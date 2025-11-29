@@ -6,6 +6,8 @@ import { LoginFormPage } from "@admin/pages/Login/LoginForm/LoginFormPage";
 import NotFound from "@admin/pages/NotFound";
 import Template from "@admin/components/Template";
 import ProtectedRoute from "@common/components/ProtectedRoute";
+import StateForm from "@admin/pages/State/StateForm";
+import StateList from "@admin/pages/State/StateList";
 
 export const Router = () => {
   return (
@@ -15,20 +17,38 @@ export const Router = () => {
       <Route element={<Template />}>
         <Route index element={<Home />} />
         <Route path="countries" element={
-            <ProtectedRoute guardName="admin" role="countries.view">
+            <ProtectedRoute guardName="admin" permission="countries.view">
               <CountryList />
             </ProtectedRoute>
           }
         />
         <Route path="countries/create" element={
-            <ProtectedRoute guardName="admin" role="countries.create">
+            <ProtectedRoute guardName="admin" permission="countries.create">
               <CountryForm />
             </ProtectedRoute>
           }
         />
         <Route path="countries/:id/edit" element={
-            <ProtectedRoute guardName="admin" role="countries.edit">
+            <ProtectedRoute guardName="admin" permission="countries.update">
               <CountryForm />
+            </ProtectedRoute>
+          }
+        />
+        <Route path="states" element={
+            <ProtectedRoute guardName="admin" permission="states.view">
+              <StateList />
+            </ProtectedRoute>
+          }
+        />
+        <Route path="states/create" element={
+            <ProtectedRoute guardName="admin" permission="states.create">
+              <StateForm />
+            </ProtectedRoute>
+          }
+        />
+        <Route path="states/:id/edit" element={
+            <ProtectedRoute guardName="admin" permission="states.update">
+              <StateForm />
             </ProtectedRoute>
           }
         />

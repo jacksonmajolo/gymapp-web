@@ -10,6 +10,9 @@ export const HomePage = () => {
         <li>
           <Link to={"countries"}>Countries</Link>
         </li>
+        <li>
+          <Link to={"states"}>States</Link>
+        </li>
       </ul>
     </>
   );

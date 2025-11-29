@@ -13,7 +13,11 @@ export const CountryList = () => {
   const [countries, setCountries] = useState<Country[]>([]);
 
   useEffect(() => {
-    countryService.index().then((countries) => setCountries(countries ?? []));
+    countryService.index().then((countries) => {
+      setCountries(countries ?? []);
+    }).catch((error) => {
+      console.error(error.message);
+    });
   }, []);
 
   const onEdit = (country: Country) => {

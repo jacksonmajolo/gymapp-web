@@ -1,0 +1,24 @@
+[
+    {
+        "id": 1,
+        "uuid": "22b6d03e-7e6f-4670-a06d-86954606930e",
+        "code": "BR",
+        "name": "Brazil",
+        "active": true
+    },
+    {
+        "id": 2,
+        "uuid": "dd50728c-730b-460c-9dbf-884b5e7bb85d",
+        "code": "AR",
+        "name": "Argentina",
+        "active": true
+        
+    },
+    {
+        "id": 3,
+        "uuid": "e8406198-327c-4404-a801-4a7803e6337e",
+        "code": "CL",
+        "name": "Chile",
+        "active": true
+    }
+]
