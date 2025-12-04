@@ -2,10 +2,12 @@ import type { ResponsePaginateData } from "@common/types/ResponsePaginateData";
 import type { ResponseData } from "@common/types/ResponseData";
 import type { Record } from "@common/types/Record";
 import { Api } from "@common/api/Api";
+import type { ListParam } from "@common/types/ListParam";
+import type { IndexParam } from "@common/types/IndexParam";
 
 export interface IRecordRepository<T extends Record> {
-  list(): Promise<ResponsePaginateData<T> | undefined>;
-  index(): Promise<ResponseData<T> | undefined>;
+  list(params?: ListParam): Promise<ResponsePaginateData<T> | undefined>;
+  index(params?: IndexParam): Promise<ResponseData<T> | undefined>;
   find(id: number): Promise<T | undefined>;
   create(data: object): Promise<T>;
   update(id: number, data: object): Promise<T>;
@@ -24,12 +26,12 @@ export class RecordRepository<T extends Record>
     this.path = path;
   }
 
-  public async list(): Promise<ResponsePaginateData<T> | undefined> {
-    return this.api.get<ResponsePaginateData<T>>(`${this.path}/list`);
+  public async list(params?: ListParam): Promise<ResponsePaginateData<T> | undefined> {
+    return this.api.get<ResponsePaginateData<T>>(`${this.path}/list`, params);
   }
 
-  public async index(): Promise<ResponseData<T> | undefined> {
-    return this.api.get<ResponseData<T>>(`${this.path}`);
+  public async index(params?: IndexParam): Promise<ResponseData<T> | undefined> {
+    return this.api.get<ResponseData<T>>(`${this.path}`, params);
   }
 
   public async find(id: number): Promise<T | undefined> {

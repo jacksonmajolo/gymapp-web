@@ -4,6 +4,7 @@ import { type State } from "@admin/types/State";
 import Button from "@common/components/Form/Button";
 import "./index.scss";
 import { useServices } from "@admin/contexts/ServiceContext";
+import type { IndexParam } from "@common/types/IndexParam";
 
 export const StateList = () => {
   const navigate = useNavigate();
@@ -13,7 +14,11 @@ export const StateList = () => {
   const [states, setStates] = useState<State[]>([]);
 
   useEffect(() => {
-    stateService.index().then((states) => {
+    const param: IndexParam = {
+      _with: ["country"],
+    };
+
+    stateService.index(param).then((states) => {
       setStates(states ?? []);
     }).catch((error) => {
       console.error(error.message);
@@ -54,6 +59,9 @@ export const StateList = () => {
               </td>
               <td>
                 {state.name}
+              </td>
+              <td>
+                {state.country?.name}
               </td>
               <td>
                 {state.active ? "Active" : "Inactive"}
